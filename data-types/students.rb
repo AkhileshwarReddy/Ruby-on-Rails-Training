@@ -3,6 +3,7 @@
 
 class Student
   @@students = []
+  PASS_MARKS = 35
 
   def initialize(name, roll_no, marks)
     new_student = {}
@@ -19,7 +20,7 @@ class Student
 
   def self.pass?(name)
   	student = @@students.find { |student| student[:name] == name }
-  	return student[:marks] >= 35
+  	return student[:marks] >= PASS_MARKS
   end
 end
 
