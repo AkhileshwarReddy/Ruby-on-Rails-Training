@@ -26,7 +26,7 @@ class Student
     student = @@students.find { |student| student[:name] == name }
 
     case student[:marks]
-    when student[:marks] >= 80
+    when 80..100
       return "A"
     when 60...80
       return "B"
@@ -35,6 +35,11 @@ class Student
     else
       return "D"
     end
+  end
+
+  def self.set_percentages
+    @@students.each { |student| student[:percentage] = (student[:marks] * 100)/100 }
+    # @@students = @@students.map { |student| student[:percentage] = (student[:marks] * 100)/100 }
   end
 end
 
