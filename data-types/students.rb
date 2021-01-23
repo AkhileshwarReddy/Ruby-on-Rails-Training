@@ -10,17 +10,31 @@ class Student
     new_student[:name] = name
     new_student[:roll_no] = roll_no
     new_student[:marks] = marks
-
     @@students.push(new_student)
   end
 
   def self.all
-  	return @@students
+    return @@students
   end
 
   def self.pass?(name)
   	student = @@students.find { |student| student[:name] == name }
   	return student[:marks] >= PASS_MARKS
+  end
+
+  def self.grade(name)
+    student = @@students.find { |student| student[:name] == name }
+
+    case student[:marks]
+    when student[:marks] >= 80
+      return "A"
+    when 60...80
+      return "B"
+    when 40...60
+      return "C"
+    else
+      return "D"
+    end
   end
 end
 
