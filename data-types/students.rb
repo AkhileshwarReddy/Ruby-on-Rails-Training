@@ -16,5 +16,10 @@ class Student
   def self.all
   	return @@students
   end
+
+  def self.pass?(name)
+  	student = @@students.find { |student| student[:name] == name }
+  	return student[:marks] >= 35
+  end
 end
 
